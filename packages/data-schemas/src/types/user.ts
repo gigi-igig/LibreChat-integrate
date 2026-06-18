@@ -31,6 +31,7 @@ export interface IUser extends Document {
   openidId?: string;
   samlId?: string;
   ldapId?: string;
+  tarsId?: string;
   githubId?: string;
   discordId?: string;
   appleId?: string;
@@ -192,6 +193,7 @@ export interface UserFilterOptions extends CursorPaginationParams {
   openidId?: string;
   samlId?: string;
   ldapId?: string;
+  tarsId?: string;
   githubId?: string;
   discordId?: string;
   appleId?: string;
