@@ -3,8 +3,10 @@ import { useSetAtom } from 'jotai';
 import { useSetRecoilState } from 'recoil';
 import * as Menu from '@ariakit/react/menu';
 import { GearIcon, DropdownMenuSeparator, Avatar } from '@librechat/client';
+import { SystemRoles } from 'librechat-data-provider';
 import {
   Archive,
+  BrainCircuit,
   ChevronRight,
   CircleHelp,
   Files,
@@ -17,6 +19,7 @@ import {
 import { ArchivedChatsModal } from '~/components/Nav/SettingsTabs/General/ArchivedChatsModal';
 import { filesDialogTriggerAtom, showFilesDialogAtom } from '~/store/filesDialog';
 import { useGetStartupConfig } from '~/data-provider';
+import TarsAdminDialog from '~/components/Admin/Tars/TarsAdminDialog';
 import { useAuthContext } from '~/hooks/AuthContext';
 import { settingsOpenAtom } from './Settings';
 import { openInNewTab } from '~/utils';
@@ -103,7 +106,9 @@ function AccountSettings({ collapsed = false }: { collapsed?: boolean }) {
   const setFilesDialogTrigger = useSetAtom(filesDialogTriggerAtom);
   const setShowShortcutsDialog = useSetRecoilState(store.showShortcutsDialog);
   const [showArchived, setShowArchived] = useState(false);
+  const [showTarsAdmin, setShowTarsAdmin] = useState(false);
   const accountSettingsButtonRef = useRef<HTMLButtonElement>(null);
+  const isTarsAdmin = user?.role === SystemRoles.ADMIN && user?.provider === 'tars';
 
   return (
     <Menu.MenuProvider placement={collapsed ? 'right-end' : undefined}>
@@ -168,6 +173,12 @@ function AccountSettings({ collapsed = false }: { collapsed?: boolean }) {
           <Files className="icon-md" aria-hidden="true" />
           {localize('com_nav_my_files')}
         </Menu.MenuItem>
+        {isTarsAdmin && (
+          <Menu.MenuItem onClick={() => setShowTarsAdmin(true)} className="select-item text-sm">
+            <BrainCircuit className="icon-md" aria-hidden="true" />
+            {localize('com_nav_tars_admin')}
+          </Menu.MenuItem>
+        )}
         <Menu.MenuItem
           onClick={() => setShowSettings(true)}
           className="select-item text-sm"
@@ -186,6 +197,13 @@ function AccountSettings({ collapsed = false }: { collapsed?: boolean }) {
         <ArchivedChatsModal
           open={showArchived}
           onOpenChange={setShowArchived}
+          triggerRef={accountSettingsButtonRef}
+        />
+      )}
+      {showTarsAdmin && (
+        <TarsAdminDialog
+          open={showTarsAdmin}
+          onOpenChange={setShowTarsAdmin}
           triggerRef={accountSettingsButtonRef}
         />
       )}

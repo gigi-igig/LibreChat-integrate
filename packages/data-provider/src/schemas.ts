@@ -1293,6 +1293,10 @@ export const tConversationSchema = z.object({
   agent_id: z.string().optional(),
   /** Durable parent/child navigation for a subagent thread. */
   subagentThread: subagentThreadLineageSchema.optional(),
+  /* pwc_tars specialized brain */
+  domain_id: z.string().optional(),
+  /* pwc_tars mirror: linked pwc_tars conversation id */
+  tarsConversationId: z.string().optional(),
   /* AWS Bedrock */
   region: z.string().optional(),
   maxTokens: coerceNumber.optional(),
@@ -1549,6 +1553,7 @@ export type TConversationTag = z.infer<typeof tConversationTagSchema>;
 
 export const googleBaseSchema = tConversationSchema.pick({
   chatProjectId: true,
+  domain_id: true,
   model: true,
   modelLabel: true,
   promptPrefix: true,
@@ -1685,6 +1690,7 @@ export const agentsBaseSchema = tConversationSchema.pick({
   resendFiles: true,
   imageDetail: true,
   agent_id: true,
+  domain_id: true,
   instructions: true,
   promptPrefix: true,
   iconURL: true,
@@ -1705,6 +1711,7 @@ export const agentsSchema = agentsBaseSchema
       typeof obj.resendFiles === 'boolean' ? obj.resendFiles : agentsSettings.resendFiles.default,
     imageDetail: obj.imageDetail ?? ImageDetail.auto,
     agent_id: obj.agent_id ?? undefined,
+    domain_id: obj.domain_id ?? undefined,
     instructions: obj.instructions ?? undefined,
     promptPrefix: obj.promptPrefix ?? null,
     iconURL: obj.iconURL ?? undefined,
@@ -1721,6 +1728,7 @@ export const agentsSchema = agentsBaseSchema
     resendFiles: agentsSettings.resendFiles.default,
     imageDetail: ImageDetail.auto,
     agent_id: undefined,
+    domain_id: undefined,
     instructions: undefined,
     promptPrefix: null,
     iconURL: undefined,
@@ -1730,6 +1738,7 @@ export const agentsSchema = agentsBaseSchema
 
 export const openAIBaseSchema = tConversationSchema.pick({
   chatProjectId: true,
+  domain_id: true,
   model: true,
   modelLabel: true,
   chatGptLabel: true,
@@ -1789,6 +1798,7 @@ export const compactGoogleSchema = googleBaseSchema
 
 export const anthropicBaseSchema = tConversationSchema.pick({
   chatProjectId: true,
+  domain_id: true,
   model: true,
   modelLabel: true,
   promptPrefix: true,
@@ -1837,6 +1847,7 @@ export const compactAgentsBaseSchema = tConversationSchema.pick({
   iconURL: true,
   greeting: true,
   agent_id: true,
+  domain_id: true,
   instructions: true,
   additional_instructions: true,
 });
