@@ -68,6 +68,7 @@ import useHasAccess from '~/hooks/Roles/useHasAccess';
 import useDictation from '~/hooks/Input/useDictation';
 import { useGetStartupConfig } from '~/data-provider';
 import CodeWorkspaceMenu from './CodeWorkspaceMenu';
+import { TarsPromptsButton } from './TarsPrompts';
 import useSteering from '~/hooks/Chat/useSteering';
 import CodeApprovalMenu from './CodeApprovalMenu';
 import TextareaHeader from './TextareaHeader';
@@ -378,7 +379,7 @@ const ChatForm = memo(function ChatForm({
     [isActionPending],
   );
 
-  const { submitMessage, submitPrompt } = useSubmitMessage();
+  const { submitMessage, submitPrompt, insertPrompt } = useSubmitMessage();
   const codeWorkspace = useCodeWorkspace(conversation, addedConvo);
 
   /** Queued/steered sends carry their FULL submission context: explicit
@@ -1000,6 +1001,13 @@ const ChatForm = memo(function ChatForm({
               >
                 <Bar
                   index={index}
+                  leadingSlot={
+                    <TarsPromptsButton
+                      domainId={conversation?.domain_id}
+                      insertPrompt={insertPrompt}
+                      disabled={disableInputs || isNotAppendable}
+                    />
+                  }
                   isRTL={isRTL}
                   disabled={disableInputs}
                   agentId={conversation?.agent_id}
@@ -1146,6 +1154,7 @@ function ChatFormWrapper({
       /** The attach picker resolves the upload route from it, and a Responses
        *  routing policy can send web-search turns to a different route. */
       conversation?.web_search,
+      conversation?.domain_id,
       hasMessages,
     ],
   );
