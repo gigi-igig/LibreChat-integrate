@@ -68,8 +68,8 @@ import useHasAccess from '~/hooks/Roles/useHasAccess';
 import useDictation from '~/hooks/Input/useDictation';
 import { useGetStartupConfig } from '~/data-provider';
 import CodeWorkspaceMenu from './CodeWorkspaceMenu';
-import { TarsPromptsButton } from './TarsPrompts';
 import useSteering from '~/hooks/Chat/useSteering';
+import { TarsPromptsButton } from './TarsPrompts';
 import CodeApprovalMenu from './CodeApprovalMenu';
 import TextareaHeader from './TextareaHeader';
 import PromptsCommand from './PromptsCommand';
@@ -81,6 +81,7 @@ import { mainTextareaId } from '~/common';
 import CollapseChat from './CollapseChat';
 import QuoteButton from './QuoteButton';
 import ToolDialogs from './ToolDialogs';
+import Disclaimer from '../Disclaimer';
 import StopButton from './StopButton';
 import SendButton from './SendButton';
 import Queue from './Composer/Queue';
@@ -1071,6 +1072,7 @@ const ChatForm = memo(function ChatForm({
             uploadingCount={uploadingCount}
             idleActions={idleActions}
           />
+          <Disclaimer />
         </div>
       </div>
     </form>

@@ -270,13 +270,10 @@ function ChatView({
                                 centerFormOnLanding={centerFormOnLanding}
                               />
                             )}
-                            {/* The generic disclaimer and the policy links are the
-                              welcome screen's; a deployment's own footer stays
-                              with the conversation that always showed it. */}
-                            {!isLandingPage && configuredFooter && <Footer configuredOnly />}
+                            {!isLandingPage && <Footer showDisclaimer={false} />}
                           </div>
                         </div>
-                        {isLandingPage && <Footer />}
+                        {isLandingPage && <Footer showDisclaimer={false} />}
                       </>
                     </TraceSurface>
                   </Presentation>

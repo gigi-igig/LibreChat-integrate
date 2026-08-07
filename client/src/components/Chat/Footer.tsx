@@ -1,10 +1,11 @@
 import React, { useEffect, memo } from 'react';
 import TagManager from 'react-gtm-module';
 import ReactMarkdown from 'react-markdown';
-import { Constants, hasConfiguredFooter } from 'librechat-data-provider';
+import { Constants } from 'librechat-data-provider';
 import type { TStartupConfig } from 'librechat-data-provider';
 import { useGetStartupConfig } from '~/data-provider';
 import { policyUrls } from '~/utils/policies';
+import Disclaimer from './Disclaimer';
 import { useLocalize } from '~/hooks';
 import { cn } from '~/utils';
 
@@ -18,6 +19,8 @@ type FooterProps = {
    *  conversation starts from carries them under the composer. With no custom
    *  footer configured, this renders nothing at all. */
   configuredOnly?: boolean;
+  /** Off where a composer is present — `Disclaimer` then sits under the input instead. */
+  showDisclaimer?: boolean;
 };
 
 type FooterStartupConfig = Pick<
@@ -28,37 +31,22 @@ type FooterStartupConfig = Pick<
 };
 
 /**
- * Whether the deployment configured footer content of its own, as the server
- * said when it served this document (`injectConfiguredFooterBootstrap`).
- *
- * Read once at module load: it is a property of the document, and an answer
- * that arrived a render later would be the guess this replaces. A shell that
- * carries no answer — the Vite dev server serves `client/index.html` itself —
- * reads as no footer, which is the default deployment.
- */
-const shellHasConfiguredFooter =
-  typeof window !== 'undefined' && window.__LIBRECHAT_CONFIG__?.hasConfiguredFooter === true;
-
-/**
- * What a conversation has to render beneath its composer. The conversation
- * renders the footer only for configured content, and the composer above it
- * reserves the band that bar needs — the bar is absolutely positioned in a
- * zero-height wrapper, so a composer that did not reserve it would be painted
- * over. Both decisions read this one answer so they cannot disagree.
- *
- * Until `/api/config` answers, that answer is the shell's, which is the
- * deployment's own `CUSTOM_FOOTER`. A DB config override that sets or clears
- * the footer for the caller's tenant, role or user is resolved only by
- * `/api/config`, so on such a deployment the resolved answer (the one that
- * wins here) can differ from the shell's.
+ * Whether a conversation renders a footer bar beneath its composer, which the
+ * composer above it reserves a band for (the bar is absolutely positioned in a
+ * zero-height wrapper). This fork always renders the PwC product footer in a
+ * conversation, so the answer is constant rather than read from the deployment
+ * config as upstream does.
  */
 export function useConfiguredFooter(): boolean {
-  const { data: config, isSuccess } = useGetStartupConfig();
-
-  return isSuccess ? hasConfiguredFooter(config) : shellHasConfiguredFooter;
+  return true;
 }
 
-function Footer({ className, startupConfig, configuredOnly = false }: FooterProps) {
+function Footer({
+  className,
+  startupConfig,
+  configuredOnly = false,
+  showDisclaimer = true,
+}: FooterProps) {
   const shouldFetchConfig = startupConfig === undefined;
   const { data: fetchedConfig } = useGetStartupConfig({ enabled: shouldFetchConfig });
   const config = shouldFetchConfig ? fetchedConfig : startupConfig;
@@ -158,7 +146,7 @@ function Footer({ className, startupConfig, configuredOnly = false }: FooterProp
         )}
         role="contentinfo"
       >
-        <div className="text-text-secondary">{localize('com_ui_ai_disclaimer')}</div>
+        {showDisclaimer && <Disclaimer className="block p-0 text-text-secondary" />}
         <div className="flex flex-wrap items-center justify-center gap-2">
           {footerElements.map((contentRender, index) => {
             const isLastElement = index === footerElements.length - 1;
