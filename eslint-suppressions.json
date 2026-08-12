@@ -4,6 +4,562 @@
       "count": 7
     }
   },
+  "client/src/components/Admin/Tars/About/Files.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/About/History.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 1
+    },
+    "shadcn/no-raw-colors": {
+      "count": 9
+    }
+  },
+  "client/src/components/Admin/Tars/Audit/Filters.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Audit/Manager.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 6
+    }
+  },
+  "client/src/components/Admin/Tars/Audit/Picker.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/Audit/ResponseDialog.tsx": {
+    "shadcn/no-unknown-classes": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Audit/Statistics.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    }
+  },
+  "client/src/components/Admin/Tars/Audit/Table.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    }
+  },
+  "client/src/components/Admin/Tars/Databases/Manager.tsx": {
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/Databases/Modal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 13
+    },
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/Databases/Table.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 5
+    }
+  },
+  "client/src/components/Admin/Tars/Domains/Manager.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 5
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/FileSystems/Manager.tsx": {
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/FileSystems/Modal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 14
+    },
+    "shadcn/no-restyle": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/FileSystems/Table.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 5
+    }
+  },
+  "client/src/components/Admin/Tars/Groups/Manager.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 2
+    },
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Groups/Members.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Issues/Comments.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/Issues/Files.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Issues/Form.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 6
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Cards.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 5
+    },
+    "shadcn/no-restyle": {
+      "count": 6
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/ChunkList.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    },
+    "shadcn/no-restyle": {
+      "count": 5
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/DatabaseBindDialog.tsx": {
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/DatabasePromptDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/DatabasesTab.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/DocumentRowActions.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/FileSystemImportDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/FileSystemsTab.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    },
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/GroupDocumentsDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 6
+    },
+    "shadcn/no-restyle": {
+      "count": 9
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/GroupScheduleSection.tsx": {
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/Header.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/Highlight.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/Manager.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 10
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/ModelsDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/SyncDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/Toolbar.tsx": {
+    "shadcn/no-restyle": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/UploadDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/WebsiteDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Detail/WebsitesTab.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Manager.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    },
+    "shadcn/no-restyle": {
+      "count": 6
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Modal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Stats.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Knowledge/Table.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 6
+    }
+  },
+  "client/src/components/Admin/Tars/ModelKeys/DailyCosts.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 1
+    },
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/ModelKeys/Keys.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 5
+    },
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/ModelKeys/Manager.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/ModelKeys/Usage.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 10
+    }
+  },
+  "client/src/components/Admin/Tars/Models/Manager.tsx": {
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/Models/Modal.tsx": {
+    "shadcn/no-restyle": {
+      "count": 9
+    }
+  },
+  "client/src/components/Admin/Tars/Operations/DetailDialog.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Operations/Filters.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Operations/Summary.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Operations/Table.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Roles/Details.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Roles/Manager.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 6
+    },
+    "shadcn/no-raw-colors": {
+      "count": 5
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Roles/MenuTree.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/Schedules/ActionDialog.tsx": {
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Schedules/LoadFailed.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Schedules/Manager.tsx": {
+    "shadcn/no-restyle": {
+      "count": 3
+    }
+  },
+  "client/src/components/Admin/Tars/Schedules/Settings.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/Schedules/Table.tsx": {
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/SysConfig/Manager.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/SystemSettings/License.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 8
+    }
+  },
+  "client/src/components/Admin/Tars/SystemSettings/Sso/ImportPreview.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/SystemSettings/Sso/Tree.tsx": {
+    "shadcn/no-inline-styles": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/SystemSettings/Sso/Whitelist.tsx": {
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/SystemSettings/Sso/index.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 1
+    },
+    "shadcn/no-raw-colors": {
+      "count": 7
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/ConfigModal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Configs.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 16
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Defaults.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 6
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/LimitInput.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Manager.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 8
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Quotas.tsx": {
+    "shadcn/no-inline-styles": {
+      "count": 1
+    },
+    "shadcn/no-raw-colors": {
+      "count": 13
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Report/Groups.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Report/Members.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Report/Ranked.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Report/Trend.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 1
+    },
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/Report/View.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/TokenQuotaInfo.tsx": {
+    "shadcn/no-inline-styles": {
+      "count": 1
+    },
+    "shadcn/no-raw-colors": {
+      "count": 12
+    }
+  },
+  "client/src/components/Admin/Tars/TokenQuota/UserPicker.tsx": {
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Users/Fields.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 8
+    }
+  },
+  "client/src/components/Admin/Tars/Users/Manager.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 2
+    },
+    "shadcn/no-raw-colors": {
+      "count": 5
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/Admin/Tars/Websites/Manager.tsx": {
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Admin/Tars/Websites/Modal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    }
+  },
+  "client/src/components/Admin/Tars/Websites/Table.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 2
+    },
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 9
+    }
+  },
+  "client/src/components/Admin/Tars/Websites/Unbind.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
   "client/src/components/Agents/AgentCard.tsx": {
     "shadcn/no-inline-styles": {
       "count": 3
@@ -69,8 +625,14 @@
     }
   },
   "client/src/components/Auth/AuthLayout.tsx": {
-    "shadcn/no-inline-styles": {
+    "shadcn/no-arbitrary-values": {
       "count": 1
+    },
+    "shadcn/no-inline-styles": {
+      "count": 2
+    },
+    "shadcn/no-raw-colors": {
+      "count": 2
     }
   },
   "client/src/components/Auth/ErrorMessage.tsx": {
@@ -87,23 +649,61 @@
     }
   },
   "client/src/components/Auth/LoginForm.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 16
+    },
     "shadcn/no-restyle": {
-      "count": 33
+      "count": 35
     }
   },
   "client/src/components/Auth/Registration.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    },
     "shadcn/no-restyle": {
       "count": 33
     }
   },
   "client/src/components/Auth/RequestPasswordReset.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
     "shadcn/no-restyle": {
       "count": 13
     }
   },
   "client/src/components/Auth/ResetPassword.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 2
+    },
     "shadcn/no-restyle": {
       "count": 48
+    }
+  },
+  "client/src/components/Auth/TarsBrandPanel.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    }
+  },
+  "client/src/components/Auth/TarsForgotPasswordModal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 14
+    },
+    "shadcn/no-restyle": {
+      "count": 3
+    }
+  },
+  "client/src/components/Auth/TarsLicenseUpload.tsx": {
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Auth/TarsRegister.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 20
+    },
+    "shadcn/no-restyle": {
+      "count": 5
     }
   },
   "client/src/components/Auth/TwoFactorScreen.tsx": {
@@ -156,6 +756,11 @@
       "count": 7
     }
   },
+  "client/src/components/Chat/Input/ChartAgent.tsx": {
+    "shadcn/require-static-classes": {
+      "count": 1
+    }
+  },
   "client/src/components/Chat/Input/ChatForm.tsx": {
     "shadcn/no-arbitrary-values": {
       "count": 3
@@ -173,6 +778,11 @@
   "client/src/components/Chat/Input/ConversationStarters.tsx": {
     "shadcn/no-inline-styles": {
       "count": 2
+    }
+  },
+  "client/src/components/Chat/Input/FileAgent.tsx": {
+    "shadcn/require-static-classes": {
+      "count": 1
     }
   },
   "client/src/components/Chat/Input/Files/DragDropOverlay.tsx": {
@@ -272,14 +882,39 @@
       "count": 1
     }
   },
+  "client/src/components/Chat/Input/RagAgent.tsx": {
+    "shadcn/require-static-classes": {
+      "count": 1
+    }
+  },
   "client/src/components/Chat/Input/SkillsCommand.tsx": {
     "shadcn/no-restyle": {
       "count": 6
     }
   },
+  "client/src/components/Chat/Input/SqlAgent.tsx": {
+    "shadcn/require-static-classes": {
+      "count": 1
+    }
+  },
   "client/src/components/Chat/Input/StreamAudio.tsx": {
     "shadcn/no-inline-styles": {
       "count": 3
+    }
+  },
+  "client/src/components/Chat/Input/TarsPlugins.tsx": {
+    "shadcn/require-static-classes": {
+      "count": 1
+    }
+  },
+  "client/src/components/Chat/Input/TarsPrompts/Button.tsx": {
+    "shadcn/no-restyle": {
+      "count": 6
+    }
+  },
+  "client/src/components/Chat/Input/TarsPrompts/Panel.tsx": {
+    "shadcn/no-restyle": {
+      "count": 7
     }
   },
   "client/src/components/Chat/Input/TokenUsage/Breakdown.tsx": {
@@ -341,6 +976,11 @@
   "client/src/components/Chat/Menus/NewChat.tsx": {
     "shadcn/no-restyle": {
       "count": 3
+    }
+  },
+  "client/src/components/Chat/Menus/Parameters/Button.tsx": {
+    "shadcn/no-restyle": {
+      "count": 10
     }
   },
   "client/src/components/Chat/Menus/Presets/EditPresetDialog.tsx": {
@@ -607,6 +1247,27 @@
   "client/src/components/Chat/Messages/Content/SearchContent.tsx": {
     "shadcn/no-unknown-classes": {
       "count": 1
+    }
+  },
+  "client/src/components/Chat/Messages/Content/TarsPluginAnswer.tsx": {
+    "shadcn/no-unknown-classes": {
+      "count": 1
+    }
+  },
+  "client/src/components/Chat/Messages/Content/TarsToolCall.tsx": {
+    "shadcn/no-inline-styles": {
+      "count": 1
+    }
+  },
+  "client/src/components/Chat/Messages/Content/TarsTrace.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 2
+    },
+    "shadcn/no-inline-styles": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 16
     }
   },
   "client/src/components/Chat/Messages/Content/ToolApproval.tsx": {
@@ -900,6 +1561,11 @@
       "count": 12
     }
   },
+  "client/src/components/Conversations/SharedWithMeSection.tsx": {
+    "shadcn/no-restyle": {
+      "count": 8
+    }
+  },
   "client/src/components/Conversations/UnpinButton.tsx": {
     "shadcn/no-restyle": {
       "count": 5
@@ -1003,6 +1669,11 @@
       "count": 30
     }
   },
+  "client/src/components/Langflow/LangflowView.tsx": {
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
   "client/src/components/MCP/CustomUserVarsSection.tsx": {
     "shadcn/no-restyle": {
       "count": 18
@@ -1011,6 +1682,11 @@
   "client/src/components/MCP/MCPConfigDialog.tsx": {
     "shadcn/no-restyle": {
       "count": 2
+    }
+  },
+  "client/src/components/MCP/MCPPendingServerItem.tsx": {
+    "shadcn/no-restyle": {
+      "count": 1
     }
   },
   "client/src/components/MCP/MCPServerMenuItem.tsx": {
@@ -1037,6 +1713,50 @@
     },
     "shadcn/require-static-classes": {
       "count": 3
+    }
+  },
+  "client/src/components/McpSettings/McpCustomApiTools.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    }
+  },
+  "client/src/components/McpSettings/McpLogsTab.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 9
+    },
+    "shadcn/no-restyle": {
+      "count": 1
+    }
+  },
+  "client/src/components/McpSettings/McpPermissionsTab.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 12
+    }
+  },
+  "client/src/components/McpSettings/McpServerModal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 1
+    },
+    "shadcn/no-restyle": {
+      "count": 11
+    }
+  },
+  "client/src/components/McpSettings/McpSettingsView.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
+    },
+    "shadcn/no-restyle": {
+      "count": 10
+    }
+  },
+  "client/src/components/McpSettings/McpToolEditorModal.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    }
+  },
+  "client/src/components/McpSettings/ServerTypeBadge.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 4
     }
   },
   "client/src/components/Messages/Content/CodeBlock.tsx": {
@@ -1091,7 +1811,7 @@
       "count": 3
     },
     "shadcn/no-unknown-classes": {
-      "count": 2
+      "count": 1
     }
   },
   "client/src/components/Nav/ExportConversation/ExportModal.tsx": {
@@ -1244,6 +1964,11 @@
       "count": 3
     }
   },
+  "client/src/components/Nav/Tars/AdminMenu.tsx": {
+    "shadcn/no-unknown-classes": {
+      "count": 1
+    }
+  },
   "client/src/components/Plugins/Store/PluginAuthForm.tsx": {
     "shadcn/no-restyle": {
       "count": 9
@@ -1272,6 +1997,29 @@
   "client/src/components/Projects/ProjectsView.tsx": {
     "shadcn/no-restyle": {
       "count": 1
+    }
+  },
+  "client/src/components/Prompts/Tars/CategorySelector.tsx": {
+    "shadcn/no-restyle": {
+      "count": 2
+    }
+  },
+  "client/src/components/Prompts/Tars/Form.tsx": {
+    "shadcn/no-raw-colors": {
+      "count": 3
+    },
+    "shadcn/no-restyle": {
+      "count": 16
+    }
+  },
+  "client/src/components/Prompts/Tars/List.tsx": {
+    "shadcn/no-restyle": {
+      "count": 3
+    }
+  },
+  "client/src/components/Prompts/Tars/Panel.tsx": {
+    "shadcn/no-restyle": {
+      "count": 3
     }
   },
   "client/src/components/Prompts/buttons/AutoSendPrompt.tsx": {
@@ -1497,13 +2245,13 @@
   },
   "client/src/components/SidePanel/Agents/AgentConfig.tsx": {
     "shadcn/no-arbitrary-values": {
-      "count": 3
+      "count": 1
     },
     "shadcn/no-raw-colors": {
       "count": 1
     },
     "shadcn/no-restyle": {
-      "count": 9
+      "count": 2
     }
   },
   "client/src/components/SidePanel/Agents/AgentFooter.tsx": {
@@ -1584,9 +2332,6 @@
   "client/src/components/SidePanel/Agents/ModelPanel.tsx": {
     "shadcn/no-arbitrary-values": {
       "count": 2
-    },
-    "shadcn/no-restyle": {
-      "count": 15
     }
   },
   "client/src/components/SidePanel/Agents/OptionToggle.tsx": {
@@ -1674,7 +2419,7 @@
   },
   "client/src/components/SidePanel/Agents/Tools/ToolsSection.tsx": {
     "shadcn/no-arbitrary-values": {
-      "count": 3
+      "count": 5
     }
   },
   "client/src/components/SidePanel/Agents/Version/VersionButton.tsx": {
@@ -1849,9 +2594,14 @@
       "count": 8
     }
   },
-  "client/src/components/SidePanel/Parameters/Panel.tsx": {
+  "client/src/components/SidePanel/Parameters/Fields.tsx": {
     "shadcn/no-restyle": {
-      "count": 7
+      "count": 6
+    }
+  },
+  "client/src/components/SidePanel/Parameters/Modal.tsx": {
+    "shadcn/no-restyle": {
+      "count": 8
     }
   },
   "client/src/components/SidePanel/Schedules/ScheduleDialog.tsx": {
@@ -1993,8 +2743,11 @@
     }
   },
   "client/src/components/Variables/Editor.tsx": {
+    "shadcn/no-arbitrary-values": {
+      "count": 2
+    },
     "shadcn/no-restyle": {
-      "count": 12
+      "count": 11
     },
     "shadcn/require-static-classes": {
       "count": 1
