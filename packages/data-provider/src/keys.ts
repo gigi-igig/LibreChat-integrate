@@ -44,6 +44,7 @@ export enum QueryKeys {
   tarsSchedules = 'tarsSchedules',
   tarsDatabases = 'tarsDatabases',
   tarsFileSystems = 'tarsFileSystems',
+  tarsWebsites = 'tarsWebsites',
   tarsDatabaseTables = 'tarsDatabaseTables',
   tarsDatabasePrompt = 'tarsDatabasePrompt',
   tarsFileSystemSources = 'tarsFileSystemSources',
