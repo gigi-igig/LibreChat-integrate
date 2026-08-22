@@ -42,6 +42,7 @@ export enum QueryKeys {
   tarsKnowledgeBaseModelBindings = 'tarsKnowledgeBaseModelBindings',
   tarsKnowledgeBaseDatasets = 'tarsKnowledgeBaseDatasets',
   tarsSchedules = 'tarsSchedules',
+  tarsDatabases = 'tarsDatabases',
   tarsDatabaseTables = 'tarsDatabaseTables',
   tarsDatabasePrompt = 'tarsDatabasePrompt',
   tarsFileSystemSources = 'tarsFileSystemSources',
