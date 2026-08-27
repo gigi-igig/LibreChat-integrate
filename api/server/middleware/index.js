@@ -22,6 +22,7 @@ const accessResources = require('./accessResources');
 const requireTarsAuth = require('./requireTarsAuth');
 const requireTarsAdmin = require('./requireTarsAdmin');
 const injectTarsDomain = require('./injectTarsDomain');
+const recordTarsChatContext = require('./recordTarsChatContext');
 const requireLdapAuth = require('./requireLdapAuth');
 const abortMiddleware = require('./abortMiddleware');
 const checkInviteUser = require('./checkInviteUser');
@@ -64,6 +65,7 @@ module.exports = {
   requireTarsAuth,
   requireTarsAdmin,
   injectTarsDomain,
+  recordTarsChatContext,
   requireLdapAuth,
   requireLocalAuth,
   requireSameOrigin,
