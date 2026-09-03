@@ -1,8 +1,7 @@
 import { useState, memo, useRef, useCallback } from 'react';
 import { useSetAtom } from 'jotai';
-import * as Menu from '@ariakit/react/menu';
-import { SystemRoles } from 'librechat-data-provider';
 import { useSetRecoilState } from 'recoil';
+import * as Menu from '@ariakit/react/menu';
 import { GearIcon, DropdownMenuSeparator, Avatar } from '@librechat/client';
 import {
   Archive,
@@ -20,10 +19,10 @@ import { useGetStartupConfig } from '~/data-provider';
 import useSidebarToggle from '~/hooks/Nav/useSidebarToggle';
 import AdminMenu, { SubmenuGroup } from './Tars/AdminMenu';
 import useSidebarState from '~/hooks/Nav/useSidebarState';
+import { useLocalize, useTarsAdminAccess } from '~/hooks';
 import { useAuthContext } from '~/hooks/AuthContext';
 import { settingsOpenAtom } from './Settings';
 import { openInNewTab } from '~/utils';
-import { useLocalize } from '~/hooks';
 import store from '~/store';
 
 function HelpSubmenu({
@@ -108,7 +107,7 @@ function AccountSettings({ collapsed = false }: { collapsed?: boolean }) {
   const setShowShortcutsDialog = useSetRecoilState(store.showShortcutsDialog);
   const [showArchived, setShowArchived] = useState(false);
   const accountSettingsButtonRef = useRef<HTMLButtonElement>(null);
-  const isTarsAdmin = user?.role === SystemRoles.ADMIN && user?.provider === 'tars';
+  const { hasAny: hasTarsMenuAccess } = useTarsAdminAccess();
   const { expanded: sidebarExpanded } = useSidebarState();
   const { setSidebarOpen } = useSidebarToggle();
   const collapseSidebarIfExpanded = useCallback(() => {
@@ -187,7 +186,7 @@ function AccountSettings({ collapsed = false }: { collapsed?: boolean }) {
           <Files className="icon-md" aria-hidden="true" />
           {localize('com_nav_my_files')}
         </Menu.MenuItem>
-        {isTarsAdmin && <AdminMenu onNavigate={collapseSidebarIfExpanded} />}
+        {hasTarsMenuAccess && <AdminMenu onNavigate={collapseSidebarIfExpanded} />}
         <Menu.MenuItem
           onClick={() => {
             collapseSidebarIfExpanded();
