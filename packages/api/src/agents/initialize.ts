@@ -135,6 +135,7 @@ import { filterFilesByEndpointRuntimeConfig } from '~/files';
 import { isFatalAgentInitializationError } from './errors';
 import { hasActiveFilePolicy } from '../protection/files';
 import { resolveAgentCodeExecution } from '~/code/agent';
+import { selectRelevantTools } from '~/agents/relevance';
 import { hasActiveFileFieldPolicy } from '~/protection';
 import { applyBackgroundToolCalls } from './background';
 import { applyTurnDelivery } from './files/delivery';
@@ -2190,6 +2191,24 @@ export async function initializeAgent(
       dropFileSearchResources();
     }
     loadToolsResult = await callLoadTools(baseToolNames);
+  }
+
+  /** Cap the MCP tools bound this turn by relevance to the user message
+   *  (pwc_tars `select_relevant_tools`), before anything reads the definitions
+   *  or the registry, so both stay consistent and the provider's per-request
+   *  tool limit is never hit by a large `tars_*` / langflow catalog. */
+  if (loadToolsResult?.toolDefinitions?.length) {
+    const { toolDefinitions: relevantDefinitions, toolRegistry: relevantRegistry } =
+      selectRelevantTools({
+        query: runtime.requestBody.text,
+        toolDefinitions: loadToolsResult.toolDefinitions,
+        toolRegistry: loadToolsResult.toolRegistry,
+      });
+    loadToolsResult = {
+      ...loadToolsResult,
+      toolDefinitions: relevantDefinitions,
+      toolRegistry: relevantRegistry,
+    };
   }
 
   const {
