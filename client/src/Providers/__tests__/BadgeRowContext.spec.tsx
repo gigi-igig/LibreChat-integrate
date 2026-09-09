@@ -44,6 +44,20 @@ jest.mock('~/data-provider', () => ({
   useVerifyAgentToolAuth: () => ({ data: mockToolAuth }),
 }));
 
+/* The pwc_tars switches read the signed-in user and the chat's brain, which the app
+   provides from `AuthContextProvider` and `ChatContext` above the composer. No user and
+   no brain keep them idle; both are held outside the factories so they stay stable. */
+const mockAuthContext = { user: undefined, isAuthenticated: false };
+jest.mock('~/hooks/AuthContext', () => ({
+  ...jest.requireActual('~/hooks/AuthContext'),
+  useAuthContext: () => mockAuthContext,
+}));
+const mockSelectedDomain = { selectedId: '', selectedDomain: undefined, domains: [] };
+jest.mock('~/components/Chat/Menus/Tars/domain', () => ({
+  ...jest.requireActual('~/components/Chat/Menus/Tars/domain'),
+  useSelectedTarsDomain: () => mockSelectedDomain,
+}));
+
 function renderProvider() {
   const client = new QueryClient({
     defaultOptions: { queries: { retry: false, cacheTime: 0 } },
