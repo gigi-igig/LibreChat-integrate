@@ -186,6 +186,7 @@ function AccountSettings({ collapsed = false }: { collapsed?: boolean }) {
           <Files className="icon-md" aria-hidden="true" />
           {localize('com_nav_my_files')}
         </Menu.MenuItem>
+        <DropdownMenuSeparator />
         {hasTarsMenuAccess && <AdminMenu onNavigate={collapseSidebarIfExpanded} />}
         <Menu.MenuItem
           onClick={() => {
