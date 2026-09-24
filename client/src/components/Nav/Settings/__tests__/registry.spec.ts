@@ -23,7 +23,6 @@ const settingsContext: SettingsContextValue = {
   isTwoFactorPolicyProvider: true,
   twoFactorEnabled: false,
   allowAccountDeletion: true,
-  aboutEnabled: false,
   engineTTS: 'browser',
   langfuseConnectionAccess: false,
   adminPanelURL: '',
