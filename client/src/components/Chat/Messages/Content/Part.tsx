@@ -8,6 +8,7 @@ import {
   isImageVisionTool,
   hasToolCallPreview,
   getToolCallPreviewRevision,
+  isTarsBuiltinToolName,
   isTarsCapabilityToolName,
 } from 'librechat-data-provider';
 import type { TMessageContentParts, TAttachment, PartMetadata } from 'librechat-data-provider';
@@ -45,6 +46,7 @@ import { ErrorMessage } from './MessageContent';
 import AskUserQuestion from './AskUserQuestion';
 import TarsCapabilityCall from './TarsTrace';
 import RetrievalCall from './RetrievalCall';
+import TarsToolCall from './TarsToolCall';
 import ToolApproval from './ToolApproval';
 import AgentHandoff from './AgentHandoff';
 import CodeAnalyze from './CodeAnalyze';
@@ -446,6 +448,22 @@ const Part = memo(function Part({
               hideAttachments={hideAttachments}
               isLast={isLast}
               onExpand={onToolExpand}
+            />
+          );
+        } else if (isTarsBuiltinToolName(toolCall.name)) {
+          return (
+            <TarsToolCall
+              name={toolCall.name}
+              args={toolCall.args ?? ''}
+              toolCallId={toolCallId}
+              attachments={attachments}
+              initialProgress={toolCall.progress ?? 0.1}
+              isSubmitting={isSubmitting}
+              onExpand={onToolExpand}
+              runStepStatus={
+                toolCall.backgroundTask?.cancelled === true ? 'cancelled' : toolCall.runStepStatus
+              }
+              runStepDurationMs={toolCall.runStepDurationMs}
             />
           );
         } else if (isTarsCapabilityToolName(toolCall.name)) {

@@ -471,6 +471,7 @@ const initializeClientWithProvider = async ({
   const endpointTokenConfigByAgentId = new Map();
 
   const invokedSkillIdentities = new Map();
+  const emitAttachment = createAttachmentEmitter({ res, streamId, jobCreatedAt });
   const toolExecuteOptions = {
     scheduledMCPExecution: getScheduleMCPExecution(getMCPRequestContext(req, res)),
     // Keep foreground cancellation owned by this request even when the agents
@@ -522,6 +523,7 @@ const initializeClientWithProvider = async ({
         actionsEnabled: ctx.actionsEnabled,
         accessibleMcpServerNames: ctx.accessibleMcpServerNames,
         jobCreatedAt,
+        emitAttachment,
       });
 
       logger.debug(`[ON_TOOL_EXECUTE] loaded ${result.loadedTools?.length ?? 0} tools`);
@@ -576,7 +578,7 @@ const initializeClientWithProvider = async ({
           ),
       ),
     },
-    emitAttachment: createAttachmentEmitter({ res, streamId, jobCreatedAt }),
+    emitAttachment,
     emitPtcProgress: createPtcProgressEmitter({ res, streamId, jobCreatedAt }),
     onSkillResolved: (skill, { agentId }) => {
       if (agentId === primaryConfig.id) {
