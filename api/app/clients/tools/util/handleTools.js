@@ -34,7 +34,7 @@ const {
   createTarsBuiltinTool,
   createTarsDataTool,
   createTarsTableTaskTool,
-  getTarsMemorySnapshot,
+  getTarsTurnFiles,
   ASK_USER_QUESTION_TOOL_NAME,
   resolveWebSearchSSRFAgents,
   buildWebSearchDynamicContext,
@@ -535,7 +535,7 @@ const loadTools = async ({
           domainId: options.req?.body?.domain_id,
           bindings: resolveTarsAgentBindings({
             toggles: options.req?.body?.ephemeralAgent,
-            documents: getTarsMemorySnapshot(options.req)?.structuredDocuments,
+            documents: getTarsTurnFiles(options.req)?.dataFiles,
             capabilities: options.req?.config?.endpoints?.agents?.capabilities,
           }),
           model: agent?.model,
@@ -555,7 +555,8 @@ const loadTools = async ({
         tarsUserId: options.req?.user?.tarsId,
         domainId: options.req?.body?.domain_id,
         model: agent?.model,
-        documents: getTarsMemorySnapshot(options.req)?.activeDocuments,
+        dataFiles: getTarsTurnFiles(options.req)?.dataFiles,
+        loadFileInput: getTarsTurnFiles(options.req)?.loadFileInput,
         loadHistory: () =>
           loadTarsPluginHistory({
             conversationId: options.req?.body?.conversationId,
@@ -578,7 +579,7 @@ const loadTools = async ({
         tarsUserId: options.req?.user?.tarsId,
         domainId: options.req?.body?.domain_id,
         agentTools: agent?.tools,
-        documents: getTarsMemorySnapshot(options.req)?.structuredDocuments,
+        dataFiles: getTarsTurnFiles(options.req)?.dataFiles,
         model: agent?.model,
         librechatUserId: user,
         question: options.req?.body?.text,
@@ -593,7 +594,7 @@ const loadTools = async ({
       requestedTools[tool] = async () =>
         createTarsDataTool({
           tarsUserId: options.req?.user?.tarsId,
-          documents: getTarsMemorySnapshot(options.req)?.structuredDocuments,
+          dataFiles: getTarsTurnFiles(options.req)?.dataFiles,
           model: agent?.model,
           librechatUserId: user,
         });
@@ -603,7 +604,7 @@ const loadTools = async ({
         createTarsTableTaskTool({
           tarsUserId: options.req?.user?.tarsId,
           domainId: options.req?.body?.domain_id,
-          documents: getTarsMemorySnapshot(options.req)?.structuredDocuments,
+          dataFiles: getTarsTurnFiles(options.req)?.dataFiles,
           model: agent?.model,
           librechatUserId: user,
         });
