@@ -725,6 +725,7 @@ export enum AgentCapabilities {
   sql_agent = 'sql_agent',
   rag_agent = 'rag_agent',
   chart_agent = 'chart_agent',
+  file_agent = 'file_agent',
   artifacts = 'artifacts',
   subagents = 'subagents',
   actions = 'actions',
@@ -907,6 +908,7 @@ export const defaultAgentCapabilities = [
   AgentCapabilities.sql_agent,
   AgentCapabilities.rag_agent,
   AgentCapabilities.chart_agent,
+  AgentCapabilities.file_agent,
   AgentCapabilities.artifacts,
   AgentCapabilities.subagents,
   AgentCapabilities.actions,
@@ -2754,6 +2756,8 @@ export const interfaceSchema = z
     ragAgent: z.boolean().optional(),
     /** pwc_tars chart agent (產生圖表) — grants `CHART_AGENT.USE`. */
     chartAgent: z.boolean().optional(),
+    /** pwc_tars file generation (產生檔案) — grants `FILE_AGENT.USE`. */
+    fileAgent: z.boolean().optional(),
     /** Langflow workflow entry in the sidebar rail; the `/langflow` route stays reachable. */
     langflow: z.boolean().optional(),
     contextUsage: z.boolean().optional(),
@@ -2985,6 +2989,7 @@ export const interfaceSchema = z
     sqlAgent: true,
     ragAgent: true,
     chartAgent: true,
+    fileAgent: true,
     langflow: false,
     contextUsage: true,
     contextCost: false,
@@ -5529,6 +5534,7 @@ export enum LocalStorageKeys {
   LAST_SQL_AGENT_TOGGLE_ = 'LAST_SQL_AGENT_TOGGLE_',
   LAST_RAG_AGENT_TOGGLE_ = 'LAST_RAG_AGENT_TOGGLE_',
   LAST_CHART_AGENT_TOGGLE_ = 'LAST_CHART_AGENT_TOGGLE_',
+  LAST_FILE_AGENT_TOGGLE_ = 'LAST_FILE_AGENT_TOGGLE_',
   /** Last selected pwc_tars plugin tools per conversation ID */
   LAST_TARS_PLUGINS_ = 'LAST_TARS_PLUGINS_',
   /** Pinned pwc_tars plugin tools (shared across conversations) */
