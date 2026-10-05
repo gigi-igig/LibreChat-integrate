@@ -1166,6 +1166,12 @@ export type Agent = {
   subagents?: AgentSubagentsConfig;
   /** Memory partition: `agent` isolates memories per (user, agent); default shared pool */
   memory_scope?: MemoryScope;
+  /**
+   * pwc_tars 專用腦 the agent's TARS tools are scoped to. When set, every chat
+   * turn with this agent runs against this brain instead of the chat's own;
+   * `null` / absent follows the chat.
+   */
+  tars_domain_id?: string | null;
 };
 
 export type TAgentsMap = Record<string, Agent | undefined>;
@@ -1207,6 +1213,7 @@ export type AgentCreateParams = {
   | 'skills_scope'
   | 'subagents'
   | 'memory_scope'
+  | 'tars_domain_id'
 >;
 
 export type AgentUpdateParams = {
@@ -1247,6 +1254,7 @@ export type AgentUpdateParams = {
   | 'skills_scope'
   | 'subagents'
   | 'memory_scope'
+  | 'tars_domain_id'
 >;
 
 /**

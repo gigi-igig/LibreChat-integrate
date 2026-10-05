@@ -1081,6 +1081,7 @@ const updateAgentHandler = async (req, res) => {
       git_identity: gitIdentityField,
       // Preserve explicit `null` (link removal); `removeNullishValues` would drop it.
       instructionsPrompt: instructionsPromptField,
+      tars_domain_id: tarsDomainIdField,
       _id,
       ...rest
     } = validatedData;
@@ -1093,6 +1094,9 @@ const updateAgentHandler = async (req, res) => {
     }
     if (instructionsPromptField !== undefined) {
       updateData.instructionsPrompt = instructionsPromptField;
+    }
+    if (tarsDomainIdField !== undefined) {
+      updateData.tars_domain_id = tarsDomainIdField;
     }
     let existingAgent;
 
@@ -1389,6 +1393,10 @@ const updateAgentHandler = async (req, res) => {
       updateData.$unset = { ...updateData.$unset, git_identity: 1 };
     }
     updateData = applyInstructionsPromptUnset(updateData);
+    if (updateData.tars_domain_id === null) {
+      delete updateData.tars_domain_id;
+      updateData.$unset = { ...updateData.$unset, tars_domain_id: 1 };
+    }
 
     let updatedAgent =
       Object.keys(updateData).length > 0
