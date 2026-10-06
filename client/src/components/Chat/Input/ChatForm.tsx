@@ -1004,7 +1004,6 @@ const ChatForm = memo(function ChatForm({
                   index={index}
                   leadingSlot={
                     <TarsPromptsButton
-                      domainId={conversation?.domain_id}
                       insertPrompt={insertPrompt}
                       disabled={disableInputs || isNotAppendable}
                     />
