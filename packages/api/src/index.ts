@@ -130,6 +130,7 @@ export * from './shared-links/config';
 export * from './shared-links/http';
 export * from './shared-links/protection';
 export * from './shared-links/session';
+export * from './shared-links/sharedWithMe';
 /* Stream */
 export * from './stream';
 /* Diagnostics */
