@@ -756,11 +756,6 @@
       "count": 7
     }
   },
-  "client/src/components/Chat/Input/ChartAgent.tsx": {
-    "shadcn/require-static-classes": {
-      "count": 1
-    }
-  },
   "client/src/components/Chat/Input/ChatForm.tsx": {
     "shadcn/no-arbitrary-values": {
       "count": 3
@@ -778,11 +773,6 @@
   "client/src/components/Chat/Input/ConversationStarters.tsx": {
     "shadcn/no-inline-styles": {
       "count": 2
-    }
-  },
-  "client/src/components/Chat/Input/FileAgent.tsx": {
-    "shadcn/require-static-classes": {
-      "count": 1
     }
   },
   "client/src/components/Chat/Input/Files/DragDropOverlay.tsx": {
@@ -882,29 +872,14 @@
       "count": 1
     }
   },
-  "client/src/components/Chat/Input/RagAgent.tsx": {
-    "shadcn/require-static-classes": {
-      "count": 1
-    }
-  },
   "client/src/components/Chat/Input/SkillsCommand.tsx": {
     "shadcn/no-restyle": {
       "count": 6
     }
   },
-  "client/src/components/Chat/Input/SqlAgent.tsx": {
-    "shadcn/require-static-classes": {
-      "count": 1
-    }
-  },
   "client/src/components/Chat/Input/StreamAudio.tsx": {
     "shadcn/no-inline-styles": {
       "count": 3
-    }
-  },
-  "client/src/components/Chat/Input/TarsPlugins.tsx": {
-    "shadcn/require-static-classes": {
-      "count": 1
     }
   },
   "client/src/components/Chat/Input/TarsPrompts/Button.tsx": {
