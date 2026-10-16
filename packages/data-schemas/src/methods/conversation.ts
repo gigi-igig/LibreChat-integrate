@@ -51,6 +51,7 @@ import { createChatExpirationDate, createTempChatExpirationDate } from '~/utils/
 import { isAgentFadingTier, isAgentFadingTierEntries } from '~/utils/fading';
 import { isCompactionSemanticIndexProjection } from '~/types/compaction';
 import { withoutMeiliIndexing } from '~/models/plugins/mongoMeili';
+import { buildTarsHiddenConversationFilter } from '~/utils/tars';
 import { tenantSafeBulkWrite } from '~/utils/tenantBulkWrite';
 import { isValidObjectIdString } from '~/utils/objectId';
 import { decrementTagCounts } from './conversationTag';
@@ -729,9 +730,13 @@ export function createConversationMethods(
     return buildRetentionVisibilityFilter<IConversation>();
   }
 
-  /** Child threads are durable execution records, not user-navigable conversations. */
+  /** Child threads are durable execution records, not user-navigable conversations.
+   *  TARS also hides the chats its UI no longer starts (see `buildTarsHiddenConversationFilter`). */
   function getHumanConversationFilter(): FilterQuery<IConversation> {
-    return { subagentThread: { $exists: false } } as FilterQuery<IConversation>;
+    return {
+      subagentThread: { $exists: false },
+      ...buildTarsHiddenConversationFilter(),
+    } as FilterQuery<IConversation>;
   }
 
   /**
