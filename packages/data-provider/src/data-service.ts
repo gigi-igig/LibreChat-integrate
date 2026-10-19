@@ -1768,22 +1768,29 @@ export const deleteTarsMcpTool = (id: string): Promise<{ success: boolean }> => 
   return request.delete(endpoints.tarsMcpAdminTool(id));
 };
 
-export const getTarsDomainMcpServers = (
-  domainId: number,
-): Promise<t.TTarsDomainMcpServersResponse> => {
-  return request.get(endpoints.tarsMcpAdminDomainServers(domainId));
+export const getTarsMcpPermissionPrincipals =
+  (): Promise<t.TTarsMcpPermissionPrincipalsResponse> => {
+    return request.get(endpoints.tarsMcpAdminPermissionPrincipals());
+  };
+
+export const getTarsMcpPermissions = (
+  principalType: t.TTarsMcpPrincipalType,
+  principalId: string,
+): Promise<t.TTarsMcpPermissionsResponse> => {
+  return request.get(endpoints.tarsMcpAdminPermissions(principalType, principalId));
 };
 
-export const getTarsDomainMcpAvailableServers = (
-  domainId: number,
-): Promise<t.TTarsMcpServersResponse> => {
-  return request.get(endpoints.tarsMcpAdminDomainAvailableServers(domainId));
+export const saveTarsMcpPermissions = (
+  data: t.TTarsMcpPermissionSavePayload,
+): Promise<{ result: t.TTarsMcpPermissionSaveResult }> => {
+  return request.post(endpoints.tarsMcpAdminPermissionSave(), data);
 };
 
-export const saveTarsDomainMcp = (
-  data: t.TTarsDomainMcpSavePayload,
-): Promise<{ success: boolean }> => {
-  return request.post(endpoints.tarsMcpAdminDomainSave(), data);
+export const deleteTarsMcpPermissions = (
+  principalType: t.TTarsMcpPrincipalType,
+  principalId: string,
+): Promise<{ deleted: number }> => {
+  return request.delete(endpoints.tarsMcpAdminPermissions(principalType, principalId));
 };
 
 export const getTarsMcpSystemVariables = (): Promise<t.TTarsMcpSystemVariablesResponse> => {
@@ -1801,10 +1808,8 @@ export const getTarsMcpUserSettings = (): Promise<t.TTarsMcpUserSettingsResponse
   return request.get(endpoints.tarsMcpUserSettings());
 };
 
-export const getTarsMcpUserDomainTools = (
-  domainId: string | number,
-): Promise<t.TTarsMcpDomainToolsResponse> => {
-  return request.get(endpoints.tarsMcpUserDomainTools(domainId));
+export const getTarsMcpUserTools = (): Promise<t.TTarsMcpDomainToolsResponse> => {
+  return request.get(endpoints.tarsMcpUserTools());
 };
 
 export const updateTarsMcpUserServer = (

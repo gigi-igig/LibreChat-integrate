@@ -38,7 +38,9 @@ import type {
   TTarsMcpServerInput,
   TTarsMcpBatchDeleteResult,
   TTarsMcpUserServerUpdate,
-  TTarsDomainMcpSavePayload,
+  TTarsMcpPrincipalType,
+  TTarsMcpPermissionSaveResult,
+  TTarsMcpPermissionSavePayload,
   TTarsUser,
   TTarsUserInput,
   TTarsUserUpdate,
@@ -129,12 +131,10 @@ export const useDeleteTarsDomainMutation = (
     ...options,
     onSuccess: (...args) => {
       invalidateDomains(queryClient);
-      /** pwc_tars deletes the brain's prompts, token limit settings and MCP grants with it. */
+      /** pwc_tars deletes the brain's prompts and token limit settings with it. LibreChat's
+       *  MCP grants are per user/group (`sys_mcp_permission`), so they are untouched. */
       queryClient.invalidateQueries([QueryKeys.tarsPrompts]);
       queryClient.invalidateQueries([QueryKeys.tarsTokenConfigs]);
-      queryClient.invalidateQueries([QueryKeys.tarsMcpDomainServers]);
-      queryClient.invalidateQueries([QueryKeys.tarsMcpDomainTools]);
-      queryClient.invalidateQueries([QueryKeys.tarsMcpUserSettings]);
       options?.onSuccess?.(...args);
     },
   });
@@ -831,7 +831,6 @@ export const useUpdateTarsSysConfigMutation = (
 const invalidateTarsMcp = (queryClient: ReturnType<typeof useQueryClient>) => {
   queryClient.invalidateQueries([QueryKeys.tarsMcpServers]);
   queryClient.invalidateQueries([QueryKeys.tarsMcpUserSettings]);
-  queryClient.invalidateQueries([QueryKeys.tarsMcpDomainServers]);
   /** Admin mutations change the injected per-server gateway entries — refresh the native MCP surfaces too. */
   queryClient.invalidateQueries([QueryKeys.mcpServers]);
   queryClient.invalidateQueries([QueryKeys.mcpTools]);
@@ -980,7 +979,7 @@ export const useSaveTarsMcpUserCredentialsMutation = (
       onSuccess: (...args) => {
         queryClient.invalidateQueries([QueryKeys.tarsMcpUserSettings]);
         /** pwc_tars re-syncs the server's tools once it authenticates. */
-        queryClient.invalidateQueries([QueryKeys.tarsMcpDomainTools]);
+        queryClient.invalidateQueries([QueryKeys.tarsMcpChatTools]);
         options?.onSuccess?.(...args);
       },
     },
@@ -995,7 +994,7 @@ export const useClearTarsMcpUserCredentialsMutation = (
     ...options,
     onSuccess: (...args) => {
       queryClient.invalidateQueries([QueryKeys.tarsMcpUserSettings]);
-      queryClient.invalidateQueries([QueryKeys.tarsMcpDomainTools]);
+      queryClient.invalidateQueries([QueryKeys.tarsMcpChatTools]);
       options?.onSuccess?.(...args);
     },
   });
@@ -1035,17 +1034,53 @@ export const useDeleteTarsMcpToolMutation = (
   });
 };
 
-export const useSaveTarsDomainMcpMutation = (
-  options?: UseMutationOptions<{ success: boolean }, unknown, TTarsDomainMcpSavePayload>,
-): UseMutationResult<{ success: boolean }, unknown, TTarsDomainMcpSavePayload> => {
+/**
+ * A grant change moves what every affected user sees, so the overview, every
+ * cached principal (a multi-target save touches several, including inactive
+ * cache entries) and the user-facing MCP surfaces all refresh.
+ */
+const invalidateTarsMcpPermissions = (queryClient: ReturnType<typeof useQueryClient>) => {
+  queryClient.invalidateQueries([QueryKeys.tarsMcpPermissionPrincipals]);
+  queryClient.invalidateQueries([QueryKeys.tarsMcpPermissions], { refetchType: 'all' });
+  queryClient.invalidateQueries([QueryKeys.tarsMcpChatTools]);
+  invalidateTarsMcp(queryClient);
+};
+
+type McpPermissionSaveResponse = { result: TTarsMcpPermissionSaveResult };
+
+export const useSaveTarsMcpPermissionsMutation = (
+  options?: UseMutationOptions<McpPermissionSaveResponse, unknown, TTarsMcpPermissionSavePayload>,
+): UseMutationResult<McpPermissionSaveResponse, unknown, TTarsMcpPermissionSavePayload> => {
   const queryClient = useQueryClient();
-  return useMutation((data: TTarsDomainMcpSavePayload) => dataService.saveTarsDomainMcp(data), {
-    ...options,
-    onSuccess: (...args) => {
-      invalidateTarsMcp(queryClient);
-      options?.onSuccess?.(...args);
+  return useMutation(
+    (data: TTarsMcpPermissionSavePayload) => dataService.saveTarsMcpPermissions(data),
+    {
+      ...options,
+      onSuccess: (...args) => {
+        invalidateTarsMcpPermissions(queryClient);
+        options?.onSuccess?.(...args);
+      },
     },
-  });
+  );
+};
+
+type McpPermissionTarget = { type: TTarsMcpPrincipalType; id: string };
+
+/** Removes every grant of one user or group (disabled ones included). */
+export const useDeleteTarsMcpPermissionsMutation = (
+  options?: UseMutationOptions<{ deleted: number }, unknown, McpPermissionTarget>,
+): UseMutationResult<{ deleted: number }, unknown, McpPermissionTarget> => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    ({ type, id }: McpPermissionTarget) => dataService.deleteTarsMcpPermissions(type, id),
+    {
+      ...options,
+      onSuccess: (...args) => {
+        invalidateTarsMcpPermissions(queryClient);
+        options?.onSuccess?.(...args);
+      },
+    },
+  );
 };
 
 type UserResponse = { user: TTarsUser };

@@ -1,4 +1,10 @@
-import type { TTarsMcpSystemVariable } from 'librechat-data-provider';
+import type {
+  TTarsMcpPermission,
+  TTarsMcpSystemVariable,
+  TTarsMcpPermissionPrincipal,
+  TTarsMcpPermissionSaveResult,
+  TTarsMcpPermissionSavePayload,
+} from 'librechat-data-provider';
 import { tarsMcpFetch } from './client';
 
 /**
@@ -57,28 +63,6 @@ export interface TarsMcpToolInput {
   description?: string;
   is_enabled?: boolean;
   input_schema?: Record<string, unknown>;
-}
-
-/** One `sys_domain_mcp` relation row (+ joined server) from the domain-binding endpoints. */
-export interface TarsDomainMcpRelation {
-  id: string;
-  sys_domain_id: number;
-  mcp_server_id: string;
-  is_enabled: boolean;
-  mcp_tool_ids?: string[] | null;
-  config?: Record<string, unknown> | null;
-  server?: TarsMcpServerDetail | null;
-  [key: string]: unknown;
-}
-
-/**
- * Full-overwrite domain↔MCP binding payload (`POST /api/mcp/domain/save`):
- * for every listed domain, unlisted servers get unbound and each listed
- * server's tool whitelist is replaced (`mcp_tool_ids: []` = whole server).
- */
-export interface TarsDomainMcpSavePayload {
-  domain_ids: number[];
-  servers: Array<{ mcp_server_id: string; mcp_tool_ids?: string[] }>;
 }
 
 /** One `mcp_logs` audit row. */
@@ -239,37 +223,80 @@ export async function adminDeleteTarsMcpTool(toolId: string, asUser: string): Pr
   });
 }
 
-/** The `sys_domain_mcp` bindings of one domain (existing whitelist state). */
-export async function adminListTarsDomainMcpServers(
-  domainId: number,
-): Promise<TarsDomainMcpRelation[]> {
-  const rows = await tarsMcpFetch<TarsDomainMcpRelation[]>(`/api/mcp/domain/${domainId}/servers`);
+/** Identifies one principal: exactly one of the two (pwc_tars rejects anything else with 400). */
+export interface TarsMcpPermissionTarget {
+  user_id?: string;
+  user_group_id?: string;
+}
+
+/** Only string values reach pwc_tars — an Express query may also carry arrays or objects. */
+function permissionTargetQuery(target: TarsMcpPermissionTarget): Record<string, string> {
+  const query: Record<string, string> = {};
+  if (typeof target.user_id === 'string' && target.user_id !== '') {
+    query.user_id = target.user_id;
+  }
+  if (typeof target.user_group_id === 'string' && target.user_group_id !== '') {
+    query.user_group_id = target.user_group_id;
+  }
+  return query;
+}
+
+/**
+ * Users and groups holding `sys_mcp_permission` grants, disabled ones included
+ * (shown as 已停用 and removable only). Every permission endpoint is
+ * `@admin_required` on pwc_tars, reads included, so all of them carry `asUser`.
+ */
+export async function adminListTarsMcpPermissionPrincipals(
+  asUser: string,
+): Promise<TTarsMcpPermissionPrincipal[]> {
+  const rows = await tarsMcpFetch<TTarsMcpPermissionPrincipal[]>('/api/mcp/permission/principals', {
+    asUser,
+  });
   return rows ?? [];
 }
 
-/** The servers (with tools) a domain's whitelist currently exposes. */
-export async function adminListTarsDomainAvailableServers(
-  domainId: number,
-): Promise<TarsMcpServerDetail[]> {
-  const rows = await tarsMcpFetch<TarsMcpServerDetail[]>(
-    `/api/mcp/domain/${domainId}/available-servers`,
-  );
+/** One user's or group's own grants (not what a user inherits from groups). */
+export async function adminGetTarsMcpPermissions(
+  target: TarsMcpPermissionTarget,
+  asUser: string,
+): Promise<TTarsMcpPermission[]> {
+  const rows = await tarsMcpFetch<TTarsMcpPermission[]>('/api/mcp/permission', {
+    query: permissionTargetQuery(target),
+    asUser,
+  });
   return rows ?? [];
 }
 
 /**
- * Overwrites the domain↔MCP bindings for the given domains. `tarsUserId` (the
- * acting admin) is forwarded so pwc_tars validates domain accessibility.
+ * Overwrites the grants of every listed user and group (unchecked servers are
+ * removed). pwc_tars validates the payload and refuses disabled principals.
  */
-export async function adminSaveTarsDomainMcp(
-  payload: TarsDomainMcpSavePayload,
-  tarsUserId: string,
-): Promise<void> {
-  await tarsMcpFetch('/api/mcp/domain/save', {
+export async function adminSaveTarsMcpPermissions(
+  payload: TTarsMcpPermissionSavePayload,
+  asUser: string,
+): Promise<TTarsMcpPermissionSaveResult | undefined> {
+  return tarsMcpFetch<TTarsMcpPermissionSaveResult>('/api/mcp/permission/save', {
     method: 'POST',
-    body: { ...payload, user_id: tarsUserId },
-    asUser: tarsUserId,
+    body: {
+      user_ids: payload.user_ids,
+      user_group_ids: payload.user_group_ids,
+      servers: payload.servers,
+    },
+    asUser,
   });
+}
+
+/** Removes every grant of one user or group; returns how many rows went. */
+export async function adminDeleteTarsMcpPermissions(
+  target: TarsMcpPermissionTarget,
+  asUser: string,
+): Promise<number> {
+  const result = await tarsMcpFetch<{ deleted?: number }>('/api/mcp/permission', {
+    method: 'DELETE',
+    query: permissionTargetQuery(target),
+    asUser,
+  });
+  return result?.deleted ?? 0;
 }
 
 /**
